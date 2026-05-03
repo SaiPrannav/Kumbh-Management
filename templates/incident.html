@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Incident Reporting & Alerts</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<!-- Navbar -->
+<header class="navbar">
+  <div class="container nav-container">
+    <div class="logo">
+      <img src="logo_withoutbg.png" alt="Festival Logo"> 
+    </div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="accomodation.html">Accommodation</a></li>
+        <li><a href="healthcare.html">Healthcare</a></li>
+        <li><a href="transport.html">Transport</a></li>
+        <li class="dropdown">
+          <a href="#">Safety & Security</a>
+          <ul class="dropdown-content">
+            <li><a href="police.html">Police Services</a></li>
+            <li><a href="lost_found.html">Lost and Found</a></li>
+            <li><a href="fire.html">Fire Services</a></li>
+            <li><a href="incident.html" class="active">Incident Reporting</a></li>
+          </ul>
+        </li>
+        <li><a href="index.html#ghats">Ghat Locations</a></li>
+        <li><a href="stall.html">Stalls and Vendors</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- Incident Reporting Section -->
+<section class="incident-section">
+  <div class="container">
+    <h2>Incident Reporting & Alerts</h2>
+    <p>Please report any emergencies or incidents to help us ensure safety during the event.</p>
+
+    <form class="incident-form">
+      <div class="form-group">
+        <label for="incidentType">Incident Type:</label>
+        <select id="incidentType" required>
+          <option value="">Select Incident Type</option>
+          <option value="Medical">Medical</option>
+          <option value="Fire">Fire</option>
+          <option value="Lost Person">Lost Person</option>
+          <option value="Theft">Theft</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="location">Location:</label>
+        <input type="text" id="location" placeholder="Enter Location" required>
+      </div>
+
+      <div class="form-group">
+        <label for="dateTime">Date and Time:</label>
+        <input type="datetime-local" id="dateTime" required>
+      </div>
+
+      <div class="form-group">
+        <label for="reportedBy">Reported By:</label>
+        <input type="text" id="reportedBy" placeholder="Your Name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="status">Status:</label>
+        <select id="status" required>
+          <option value="">Select Status</option>
+          <option value="Resolved">Resolved</option>
+          <option value="Pending">Pending</option>
+          <option value="Ongoing">Ongoing</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="assignedAuthority">Assigned Authority:</label>
+        <input type="text" id="assignedAuthority" placeholder="Assigned Authority" required>
+      </div>
+
+      <button type="submit" class="btn-submit">Submit Report</button>
+    </form>
+  </div>
+</section>
+
+ <!-- Footer -->
+ <footer class="footer">
+  <div class="container footer-container">
+    <div class="footer-section">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="accomodation.html">Accommodation</a></li>
+        <li><a href="healthcare.html">Healthcare</a></li>
+        <li><a href="transport.html">Transport</a></li>
+        <li><a href="stall.html">Stalls & Vendors</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-section">
+      <h3>Safety & Security</h3>
+      <ul>
+        <li><a href="police.html">Police Services</a></li>
+        <li><a href="lost_found.html">Lost and Found</a></li>
+        <li><a href="fire.html">Fire Services</a></li>
+        <li><a href="incident.html">Incident Reporting</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-section">
+      <h3>Contact Us</h3>
+      <ul>
+        <li>Email: festivalinfo@gmail.com</li>
+        <li>Phone: +91-1234567890</li>
+        <li>Location: Festival Grounds, India</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; 2025 Festival Event. All Rights Reserved.</p>
+  </div>
+</footer>
+<script src="path/to/script.js"></script>
+</body>
