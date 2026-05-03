@@ -103,7 +103,7 @@ class PoliceOfficer(Base):
     
     Officer_ID = Column(String(50), primary_key=True)
     Officer_Name = Column(String(100), nullable=False)
-    Rank = Column(String(50))
+    Officer_Rank = Column(String(50))
     Contact_Number = Column(String(20))
     Shift_Timings = Column(String(100))
     Station_ID = Column(String(50), ForeignKey('Police_Stations.Station_ID'))

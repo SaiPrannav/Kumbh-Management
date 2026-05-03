@@ -100,7 +100,7 @@ class PoliceStationBase(BaseModel):
 
 class PoliceOfficerBase(BaseModel):
     Officer_Name: str
-    Rank: Optional[str] = None
+    Officer_Rank: Optional[str] = None 
     Contact_Number: Optional[str] = None
     Shift_Timings: Optional[str] = None
     Station_ID: Optional[str] = None
