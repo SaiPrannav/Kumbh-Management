@@ -1,8 +1,9 @@
+fastapi
 uvicorn
 sqlalchemy
 pymysql
-fastapi
-passlib
-jwt
-bcrypt
+jinja2
 python-multipart
+passlib[bcrypt]
+bcrypt
+PyJWT
