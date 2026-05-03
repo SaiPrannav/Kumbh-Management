@@ -5,250 +5,157 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Festival Website - Home</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="/static/styles.css">
   <script src="https://kit.fontawesome.com/yourfontawesomekit.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
 
-  <!-- Navbar -->
-  <header class="navbar">
-    <div class="container nav-container">
-      <div class="logo">
-        <img src="logo_withoutbg.png" alt="Festival Logo">
-      </div>
-      <a href="register.html" class="top-register-btn">Register</a>
-      <nav>
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="accomodation.html">Accommodation</a></li>
-          <li><a href="healthcare.html">Healthcare</a></li>
-          <li><a href="transport.html">Transport</a></li>
-          <li class="dropdown">
-            <a href="#">Safety & Security ▾</a>
-            <ul class="dropdown-content">
-              <li><a href="police.html">Police Services</a></li>
-              <li><a href="lost_found.html">Lost and Found</a></li>
-              <li><a href="fire.html">Fire Services</a></li>
-              <li><a href="incident.html">Incident Reporting</a></li>
-            </ul>
-          </li>
-          <li><a href="#ghats">Ghat Locations</a></li>
-          <li><a href="stall.html">Stalls and Vendors</a></li>
-        </ul>
-      </nav>
+<!-- Navbar -->
+<header class="navbar">
+  <div class="container nav-container">
+    <div class="logo">
+      <img src="/static/logo_withoutbg.png" alt="Festival Logo">
     </div>
-  </header>
+    <a href="/register.html" class="top-register-btn">Register</a>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/accomodation.html">Accommodation</a></li>
+        <li><a href="/healthcare.html">Healthcare</a></li>
+        <li><a href="/transport.html">Transport</a></li>
+        <li class="dropdown">
+          <a href="#">Safety & Security ▾</a>
+          <ul class="dropdown-content">
+            <li><a href="/police.html">Police Services</a></li>
+            <li><a href="/lost_found.html">Lost and Found</a></li>
+            <li><a href="/fire.html">Fire Services</a></li>
+            <li><a href="/incident.html">Incident Reporting</a></li>
+          </ul>
+        </li>
+        <li><a href="#ghats">Ghat Locations</a></li>
+        <li><a href="/stall.html">Stalls and Vendors</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
 
+<!-- Banner -->
+<section class="banner">
+  <div class="banner-content">
+    <h2>Kumbh Mela</h2>
+    <p>
+      Welcome to the 2025 Maha Kumbh Mela, world's largest gathering.
+      Experience devotion, culture, and unity.
+    </p>
+  </div>
+</section>
 
-  <!-- Banner Section -->
-  <section class="banner">
-    <div class="banner-content">
-      <h2>Kumbh Mela</h2>
-      <p>Welcome to the 2025 Maha Kumbh Mela,
-        world's largest congregation of people!
-        Join us in this grand spiritual gathering
-        to experience the vibrant culture, devotion,
-        and unity.Plan your sacred journey with us</p>
-    </div>
-  </section>
+<!-- Plan Section -->
+<section class="pilgrimage">
+  <div class="container">
+    <h2>Plan Your Pilgrimage</h2>
 
-  <!-- Plan Your Pilgrimage Section -->
-  <section class="pilgrimage">
-    <div class="container">
-      <h2>Plan Your Pilgrimage</h2>
-      <div class="pilgrimage-content">
-        <!-- Left side with buttons and content -->
-        <div class="pilgrimage-items">
-          <div class="pilgrimage-item">
-            <a href="accomodation.html" class="btn">Stay</a>
-            <p class="content">Find the best accommodation options during your pilgrimage.</p>
-          </div>
-          <div class="pilgrimage-item">
-            <a href="transport.html" class="btn">Travel</a>
-            <p class="content">Explore travel options to reach your destination comfortably.</p>
-          </div>
-          <div class="pilgrimage-item">
-            <a href="#ghats" class="btn">Ghat Locations</a>
-            <p class="content">Discover the different ghats and their significance during your visit.</p>
-          </div>
+    <div class="pilgrimage-content">
+
+      <div class="pilgrimage-items">
+        <div class="pilgrimage-item">
+          <a href="/accomodation.html" class="btn">Stay</a>
+          <p>Find accommodation easily.</p>
         </div>
 
-        <!-- Right side with an image -->
-        <div class="pilgrimage-image">
-          <img src="plan.png" alt="Pilgrimage Image" />
+        <div class="pilgrimage-item">
+          <a href="/transport.html" class="btn">Travel</a>
+          <p>Explore transport options.</p>
+        </div>
+
+        <div class="pilgrimage-item">
+          <a href="#ghats" class="btn">Ghat Locations</a>
+          <p>Discover sacred ghats.</p>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- Services Section -->
-  <section class="services">
-    <div class="container">
-      <h2>Services</h2>
-      <div class="service-cards">
-        <a href="fire.html" class="service-card">
-          <h3 class="card-title">Fire Brigade</h3>
-          <p class="card-desc">Quick emergency response to fire hazards and safety concerns.</p>
-        </a>
-        <a href="lost_found.html" class="service-card">
-          <h3 class="card-title">Lost and Found</h3>
-          <p class="card-desc">Report or search for lost belongings during the event.</p>
-        </a>
-        <a href="incident.html" class="service-card">
-          <h3 class="card-title">Incident Reporting</h3>
-          <p class="card-desc">Inform authorities about any suspicious or unfortunate event.</p>
-        </a>
-        <a href="healthcare.html" class="service-card">
-          <h3 class="card-title">Healthcare</h3>
-          <p class="card-desc">Access medical help and facilities during your pilgrimage.</p>
-        </a>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- Ghat Locations Section -->
-  <section id="ghats" class="ghats">
-    <div class="container">
-      <h2>Ghat Locations</h2>
-      <div class="ghat-list">
-        <div id="ghat-map" style="height: 400px; margin-top: 2rem; border-radius: 12px;"></div>
-        <div class="ghat-card">
-          <img src="https://www.varanasi.org.in/wp-content/uploads/img/Dashashwamedh-Ghat.png" alt="Dashashwamedh Ghat">
-          <h3 class="ghat-title">Dashashwamedh Ghat</h3>
-          <p class="ghat-desc">One of the oldest and holiest ghats, known for its spiritual energy and daily Ganga Aarti
-            rituals.</p>
-          <p><strong>Location:</strong> Dashashwamedh Ghat Rd, Varanasi</p>
-          <p><strong>Bathing Timings:</strong> 4:00 AM - 9:00 PM</p>
-          <p><strong>Safety Measures:</strong> Lifeguards, First Aid, Rescue Boats</p>
-          <p><strong>Lifeguards Assigned:</strong> 10</p>
-          <p><strong>Emergency Contact:</strong> +91 90123 45678</p>
-        </div>
-
-        <div class="ghat-card">
-          <img
-            src="https://media.gettyimages.com/id/140177539/photo/india-uttar-pradesh-allahabad-akbars-fort.jpg?s=2048x2048&w=gi&k=20&c=FEONclufDgKpApJ_NFqGPmfEQEfRnCOmiF1uNQ47o3c="
-            alt="Kila Ghat">
-          <h3 class="ghat-title">Kila Ghat</h3>
-          <p class="ghat-desc">Located near Akbar’s Fort, this peaceful ghat offers a blend of historical charm and
-            spiritual significance.</p>
-          <p><strong>Location:</strong> Allahabad Fort, Prayagraj</p>
-          <p><strong>Bathing Timings:</strong> 5:00 AM - 8:00 PM</p>
-          <p><strong>Safety Measures:</strong> Lifeguards, Buoys, Warning Signs</p>
-          <p><strong>Lifeguards Assigned:</strong> 7</p>
-          <p><strong>Emergency Contact:</strong> +91 90234 56789</p>
-        </div>
-
-        <div class="ghat-card">
-          <img
-            src="https://content3.jdmagicbox.com/v2/comp/allahabad/s2/0532px532.x532.230101010648.d2s2/catalogue/rasulabad-ghat-rasulabad-allahabad-tourist-attraction-pjdoz7pavi.jpg"
-            alt="Rasulabad Ghat">
-          <h3 class="ghat-title">Rasulabad Ghat</h3>
-          <p class="ghat-desc">Tranquil and ideal for sacred rites like Shraddha, this ghat offers a peaceful riverbank
-            experience.</p>
-          <p><strong>Location:</strong> Teliarganj, Prayagraj</p>
-          <p><strong>Bathing Timings:</strong> 5:00 AM - 7:00 PM</p>
-          <p><strong>Safety Measures:</strong> Rescue Boat, Medical Tent</p>
-          <p><strong>Lifeguards Assigned:</strong> 6</p>
-          <p><strong>Emergency Contact:</strong> +91 90345 67890</p>
-        </div>
-
-        <div class="ghat-card">
-          <img
-            src="https://images.jdmagicbox.com/v2/comp/allahabad/p9/0532px532.x532.241227150502.p1p9/catalogue/gyan-ganga-ghat-sangam-place-allahabad-tourist-attraction-3i8vcrp7nx-250.jpg"
-            alt="Naukayan Ghat">
-          <h3 class="ghat-title">Naukayan Ghat</h3>
-          <p class="ghat-desc">Known for serene boat rides and scenic beauty, this ghat offers a blend of devotion and
-            leisure.</p>
-          <p><strong>Location:</strong> Old Railway Bridge, Mutthi Ganj, Prayagraj</p>
-          <p><strong>Bathing Timings:</strong> 6:00 AM - 8:00 PM</p>
-          <p><strong>Safety Measures:</strong> Lifeguards, Life Jackets</p>
-          <p><strong>Lifeguards Assigned:</strong> 5</p>
-          <p><strong>Emergency Contact:</strong> +91 90456 78901</p>
-        </div>
-
-        <div class="ghat-card">
-          <img src="https://files.yappe.in/place/full/mahewa-ghat-8281820.webp" alt="Mahewa Ghat">
-          <h3 class="ghat-title">Mahewa Ghat</h3>
-          <p class="ghat-desc">A serene and simple ghat perfect for quiet prayers and morning dips away from the crowds.
-          </p>
-          <p><strong>Location:</strong> Ram Nagar, Prayagraj</p>
-          <p><strong>Bathing Timings:</strong> 4:30 AM - 7:30 PM</p>
-          <p><strong>Safety Measures:</strong> Volunteers, First Aid Tent</p>
-          <p><strong>Lifeguards Assigned:</strong> 4</p>
-          <p><strong>Emergency Contact:</strong> +91 90567 89012</p>
-        </div>
-
-        <div class="ghat-card">
-          <img src="https://img.traveltriangle.com/blog/wp-content/uploads/2024/07/Saraswati-Ghat.jpg"
-            alt="Saraswati Ghat">
-          <h3 class="ghat-title">Saraswati Ghat</h3>
-          <p class="ghat-desc">A vibrant ghat famous for its scenic beauty and cultural significance during the Kumbh
-            Mela.</p>
-          <p><strong>Location:</strong> Near New Yamuna Bridge, Prayagraj</p>
-          <p><strong>Bathing Timings:</strong> 5:00 AM - 8:00 PM</p>
-          <p><strong>Safety Measures:</strong> Lifeguards, Public Announcement System</p>
-          <p><strong>Lifeguards Assigned:</strong> 8</p>
-          <p><strong>Emergency Contact:</strong> +91 90678 90123</p>
-        </div>
-
-        <div class="ghat-card">
-          <img
-            src="https://content.jdmagicbox.com/v2/comp/allahabad/p9/0532px532.x532.241227150502.p1p9/catalogue/gyan-ganga-ghat-sangam-place-allahabad-tourist-attraction-3i8vcrp7nx.jpg"
-            alt="Gyan Ganga Ghat">
-          <h3 class="ghat-title">Gyan Ganga Ghat</h3>
-          <p class="ghat-desc">Associated with wisdom and meditation, this ghat provides a peaceful space for spiritual
-            seekers.</p>
-          <p><strong>Location:</strong> Dewrakh Kachhar, Prayagraj</p>
-          <p><strong>Bathing Timings:</strong> 4:00 AM - 8:30 PM</p>
-          <p><strong>Safety Measures:</strong> Lifeguards, Emergency Response Tent</p>
-          <p><strong>Lifeguards Assigned:</strong> 6</p>
-          <p><strong>Emergency Contact:</strong> +91 90789 01234</p>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container footer-container">
-      <div class="footer-section">
-        <h3>Quick Links</h3>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="accomodation.html">Accommodation</a></li>
-          <li><a href="healthcare.html">Healthcare</a></li>
-          <li><a href="transport.html">Transport</a></li>
-          <li><a href="stall.html">Stalls & Vendors</a></li>
-        </ul>
+      <div class="pilgrimage-image">
+        <img src="/static/plan.png" alt="Plan">
       </div>
 
-      <div class="footer-section">
-        <h3>Safety & Security</h3>
-        <ul>
-          <li><a href="police.html">Police Services</a></li>
-          <li><a href="lost_found.html">Lost and Found</a></li>
-          <li><a href="fire.html">Fire Services</a></li>
-          <li><a href="incident.html">Incident Reporting</a></li>
-        </ul>
-      </div>
+    </div>
+  </div>
+</section>
 
-      <div class="footer-section">
-        <h3>Contact Us</h3>
-        <ul>
-          <li>Email: festivalinfo@gmail.com</li>
-          <li>Phone: +91-1234567890</li>
-          <li>Location: Festival Grounds, India</li>
-        </ul>
-      </div>
+<!-- Services -->
+<section class="services">
+  <div class="container">
+    <h2>Services</h2>
+
+    <div class="service-cards">
+      <a href="/fire.html" class="service-card">
+        <h3>Fire Brigade</h3>
+      </a>
+
+      <a href="/lost_found.html" class="service-card">
+        <h3>Lost & Found</h3>
+      </a>
+
+      <a href="/incident.html" class="service-card">
+        <h3>Incident Reporting</h3>
+      </a>
+
+      <a href="/healthcare.html" class="service-card">
+        <h3>Healthcare</h3>
+      </a>
     </div>
 
-    <div class="footer-bottom">
-      <p>&copy; 2025 Festival Event. All Rights Reserved.</p>
+  </div>
+</section>
+
+<!-- Ghats -->
+<section id="ghats" class="ghats">
+  <div class="container">
+    <h2>Ghat Locations</h2>
+
+    <div class="ghat-list">
+
+      <div class="ghat-card">
+        <img src="https://www.varanasi.org.in/wp-content/uploads/img/Dashashwamedh-Ghat.png">
+        <h3>Dashashwamedh Ghat</h3>
+      </div>
+
+      <div class="ghat-card">
+        <img src="https://img.traveltriangle.com/blog/wp-content/uploads/2024/07/Saraswati-Ghat.jpg">
+        <h3>Saraswati Ghat</h3>
+      </div>
+
     </div>
-  </footer>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container footer-container">
+
+    <div class="footer-section">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/accomodation.html">Accommodation</a></li>
+        <li><a href="/healthcare.html">Healthcare</a></li>
+        <li><a href="/transport.html">Transport</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-section">
+      <h3>Safety</h3>
+      <ul>
+        <li><a href="/police.html">Police</a></li>
+        <li><a href="/fire.html">Fire</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <p style="text-align:center;">© 2025 Kumbh</p>
+</footer>
 
 </body>
+</html>

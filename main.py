@@ -1,28 +1,24 @@
 import logging
-import os
-from fastapi import FastAPI, HTTPException, Depends, status, Request
+from fastapi import FastAPI, HTTPException, Depends, Request
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from sqlalchemy.orm import Session
 from sqlalchemy import text
-from typing import List
 import uuid
 import jwt
 from datetime import datetime, timedelta
 
 from pydanticmodel import *
-import models
-from database import engine, SessionLocal
+from database import SessionLocal
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
-from passlib.hash import bcrypt_sha256
 
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.INFO)
 
 app = FastAPI(title="Kumbh Management")
 
-# CORS
+# ✅ CORS
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -31,21 +27,22 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# ✅ SAFE STATIC + TEMPLATE SETUP
-if os.path.isdir("static"):
-    app.mount("/static", StaticFiles(directory="static"), name="static")
+# ✅ STATIC (NO CONDITION — ALWAYS MOUNT)
+app.mount("/static", StaticFiles(directory="static"), name="static")
 
-templates = Jinja2Templates(directory="templates") if os.path.isdir("templates") else None
+# ✅ TEMPLATES (NO None — MUST EXIST)
+templates = Jinja2Templates(directory="templates")
 
-def render_template(name: str, request: Request):
-    if not templates:
-        return HTMLResponse("Templates folder missing")
+
+# ✅ SAFE TEMPLATE FUNCTION
+def render_template(template_name: str, request: Request):
     try:
-        return templates.TemplateResponse(name, {"request": request})
+        return templates.TemplateResponse(template_name, {"request": request})
     except Exception as e:
         return HTMLResponse(f"Template error: {str(e)}")
 
-# DB Dependency
+
+# ✅ DB Dependency
 def get_db():
     db = SessionLocal()
     try:
@@ -53,7 +50,10 @@ def get_db():
     finally:
         db.close()
 
-# 🔥 ROUTES (SAFE)
+
+# =========================
+# 🌐 HTML ROUTES
+# =========================
 
 @app.get("/", response_class=HTMLResponse)
 async def root(request: Request):
@@ -64,7 +64,7 @@ async def index(request: Request):
     return render_template("index.html", request)
 
 @app.get("/login1.html", response_class=HTMLResponse)
-async def login(request: Request):
+async def login_page(request: Request):
     return render_template("login1.html", request)
 
 @app.get("/accomodation.html", response_class=HTMLResponse)
@@ -107,15 +107,20 @@ async def stall(request: Request):
 async def transport(request: Request):
     return render_template("transport.html", request)
 
-# 🔥 PILGRIM REGISTER (WORKING)
+
+# =========================
+# 🧾 PILGRIM REGISTER API
+# =========================
 
 @app.post("/pilgrims/register", status_code=201)
 async def register_pilgrims(pilgrim_data: PilgrimBase, db: Session = Depends(get_db)):
     pilgrim_id = str(uuid.uuid4())
 
     query = text("""
-        INSERT INTO Pilgrims(PILGRIM_ID, NAME, AGE, GENDER, CONTACT_NUMBER, EMAIL_ADDRESS, ADDRESS, EMERGENCY_CONTACT, MEDICAL_CONDITION)
-        VALUES(:pid, :name, :age, :gender, :contact, :email, :addr, :emergency, :medical)
+        INSERT INTO Pilgrims
+        (PILGRIM_ID, NAME, AGE, GENDER, CONTACT_NUMBER, EMAIL_ADDRESS, ADDRESS, EMERGENCY_CONTACT, MEDICAL_CONDITION)
+        VALUES
+        (:pid, :name, :age, :gender, :contact, :email, :addr, :emergency, :medical)
     """)
 
     try:
@@ -137,11 +142,13 @@ async def register_pilgrims(pilgrim_data: PilgrimBase, db: Session = Depends(get
 
     return {"message": "Success", "id": pilgrim_id}
 
+
+# =========================
 # 🔐 AUTH
+# =========================
 
 SECRET_KEY = "secret"
 ALGORITHM = "HS256"
-ACCESS_TOKEN_EXPIRE_MINUTES = 30
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/login")
 
@@ -151,9 +158,13 @@ def create_access_token(data: dict):
 
 @app.post("/login")
 async def login(form_data: OAuth2PasswordRequestForm = Depends(), db: Session = Depends(get_db)):
-    user = db.execute(text("SELECT * FROM authorities WHERE username=:u"), {"u": form_data.username}).fetchone()
+    user = db.execute(
+        text("SELECT * FROM authorities WHERE username=:u"),
+        {"u": form_data.username}
+    ).fetchone()
+
     if not user:
-        raise HTTPException(status_code=401)
+        raise HTTPException(status_code=401, detail="Invalid credentials")
 
     token = create_access_token({"sub": user[1]})
     return {"access_token": token}

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Lost and Found - Festival Event</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="/static/styles.css">
 </head>
 
 <body>
@@ -13,25 +13,25 @@
 <header class="navbar">
   <div class="container nav-container">
     <div class="logo">
-      <img src="logo_withoutbg.png" alt="Festival Logo"> 
+      <img src="/static/logo_withoutbg.png" alt="Festival Logo"> 
     </div>
     <nav>
       <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="accomodation.html">Accommodation</a></li>
-        <li><a href="healthcare.html">Healthcare</a></li>
-        <li><a href="transport.html">Transport</a></li>
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/accomodation.html">Accommodation</a></li>
+        <li><a href="/healthcare.html">Healthcare</a></li>
+        <li><a href="/transport.html">Transport</a></li>
         <li class="dropdown">
           <a href="#">Safety & Security</a>
           <ul class="dropdown-content">
-            <li><a href="police.html">Police Services</a></li>
-            <li><a href="lost_found.html" class="active">Lost and Found</a></li>
-            <li><a href="fire.html">Fire Services</a></li>
-            <li><a href="incident.html">Incident Reporting</a></li>
+            <li><a href="/police.html">Police Services</a></li>
+            <li><a href="/lost_found.html" class="active">Lost and Found</a></li>
+            <li><a href="/fire.html">Fire Services</a></li>
+            <li><a href="/incident.html">Incident Reporting</a></li>
           </ul>
         </li>
-        <li><a href="index.html#ghats">Ghat Locations</a></li>
-        <li><a href="stall.html">Stalls and Vendors</a></li>
+        <li><a href="/index.html#ghats">Ghat Locations</a></li>
+        <li><a href="/stall.html">Stalls and Vendors</a></li>
       </ul>
     </nav>
   </div>
@@ -43,75 +43,70 @@
     <h2>Lost and Found Services</h2>
     <p>If you have lost or found an item, please report it here.</p>
 
-    <!-- Lost and Found Form -->
     <div class="form-container">
       <form action="#" method="POST" class="lost-found-form">
 
         <div class="form-group">
-          <label for="name">Your Name *</label>
-          <input type="text" id="name" name="name" required>
+          <label>Your Name *</label>
+          <input type="text" required>
         </div>
 
         <div class="form-group">
-          <label for="contact">Contact Number *</label>
-          <input type="text" id="contact" name="contact" required>
+          <label>Contact Number *</label>
+          <input type="text" required>
         </div>
 
         <div class="form-group">
-          <label for="email">Email Address</label>
-          <input type="email" id="email" name="email">
+          <label>Email Address</label>
+          <input type="email">
         </div>
 
         <div class="form-group">
-          <label for="itemType">Item Type *</label>
-          <select id="itemType" name="itemType" required>
+          <label>Item Type *</label>
+          <select required>
             <option value="">-- Select --</option>
-            <option value="Lost">Lost</option>
-            <option value="Found">Found</option>
+            <option>Lost</option>
+            <option>Found</option>
           </select>
         </div>
 
         <div class="form-group">
-          <label for="description">Item Description *</label>
-          <textarea id="description" name="description" rows="4" required></textarea>
+          <label>Description *</label>
+          <textarea rows="4" required></textarea>
         </div>
 
         <div class="form-group">
-          <label for="location">Last Seen Location *</label>
-          <input type="text" id="location" name="location" required>
+          <label>Last Seen Location *</label>
+          <input type="text" required>
         </div>
 
         <div class="form-group">
-          <label for="date">Date Lost/Found *</label>
-          <input type="date" id="date" name="date" required>
+          <label>Date *</label>
+          <input type="date" required>
         </div>
 
-        <button type="submit" class="btn-primary">Submit Report</button>
+        <button type="submit" class="btn-primary">Submit</button>
 
       </form>
     </div>
 
-    <!-- Lost & Found Booths Info -->
     <div class="booth-section">
-      <h3>📍 Lost & Found Booth Locations</h3>
+      <h3>📍 Booth Locations</h3>
       <div class="booth-grid">
 
         <div class="booth-card">
-          <h4>Main Lost & Found Center</h4>
-          <p>Location: Entry Gate 2</p>
-          <p>Contact: +91 90000 11122</p>
+          <h4>Main Center</h4>
+          <p>Entry Gate 2</p>
         </div>
 
         <div class="booth-card">
-          <h4>Riverbank Booth</h4>
-          <p>Location: Near Main Ghat</p>
-          <p>Contact: +91 91111 22334</p>
+          <h4>River Booth</h4>
+          <p>Near Ghat</p>
         </div>
 
         <div class="booth-card">
-          <h4>Food Court Help Desk</h4>
-          <p>Location: Central Food Court</p>
-          <p>Contact: +91 92222 33445</p>
+          <h4>Food Court Desk</h4>
+          <p>Central Area</p>
         </div>
 
       </div>
@@ -120,43 +115,34 @@
   </div>
 </section>
 
- <!-- Footer -->
- <footer class="footer">
+<!-- Footer -->
+<footer class="footer">
   <div class="container footer-container">
+
     <div class="footer-section">
       <h3>Quick Links</h3>
       <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="accomodation.html">Accommodation</a></li>
-        <li><a href="healthcare.html">Healthcare</a></li>
-        <li><a href="transport.html">Transport</a></li>
-        <li><a href="stall.html">Stalls & Vendors</a></li>
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/accomodation.html">Accommodation</a></li>
+        <li><a href="/healthcare.html">Healthcare</a></li>
+        <li><a href="/transport.html">Transport</a></li>
       </ul>
     </div>
 
     <div class="footer-section">
-      <h3>Safety & Security</h3>
+      <h3>Safety</h3>
       <ul>
-        <li><a href="police.html">Police Services</a></li>
-        <li><a href="lost_found.html">Lost and Found</a></li>
-        <li><a href="fire.html">Fire Services</a></li>
-        <li><a href="incident.html">Incident Reporting</a></li>
+        <li><a href="/police.html">Police</a></li>
+        <li><a href="/fire.html">Fire</a></li>
       </ul>
     </div>
 
-    <div class="footer-section">
-      <h3>Contact Us</h3>
-      <ul>
-        <li>Email: festivalinfo@gmail.com</li>
-        <li>Phone: +91-1234567890</li>
-        <li>Location: Festival Grounds, India</li>
-      </ul>
-    </div>
   </div>
 
-  <div class="footer-bottom">
-    <p>&copy; 2025 Festival Event. All Rights Reserved.</p>
-  </div>
+  <p style="text-align:center;">© 2025 Kumbh</p>
 </footer>
-<script src="path/to/script.js"></script>
+
+<script src="/static/script.js"></script>
+
 </body>
+</html>
