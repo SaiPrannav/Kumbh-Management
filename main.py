@@ -172,3 +172,60 @@ async def login(form_data: OAuth2PasswordRequestForm = Depends(), db: Session = 
 
     token = create_access_token({"sub": user[1]})
     return {"access_token": token, "token_type": "bearer"}
+
+# =========================
+# LOST & FOUND API
+# =========================
+
+@app.post("/lost-and-found/report", status_code=201)
+async def report_lost_found(item: LostAndFoundCreate, db: Session = Depends(get_db)):
+    query = text("""
+        INSERT INTO Lost_And_Found
+        (Lost_Item_Person_ID, Description, Date_Time, Reported_By, Availability, Claim_Status, Location)
+        VALUES
+        (:id, :desc, :dt, :by, :avail, :claim, :loc)
+    """)
+    try:
+        db.execute(query, {
+            "id":    item.Lost_Item_Person_ID,
+            "desc":  item.Description,
+            "dt":    item.Date_Time,
+            "by":    item.Reported_By,
+            "avail": item.Availability,
+            "claim": item.Claim_Status.value if item.Claim_Status else "Unclaimed",
+            "loc":   item.Location,
+        })
+        db.commit()
+    except Exception as e:
+        db.rollback()
+        raise HTTPException(status_code=500, detail=str(e))
+    return {"message": "Reported successfully"}
+
+
+# =========================
+# INCIDENT REPORT API
+# =========================
+
+@app.post("/incidents/report", status_code=201)
+async def report_incident(incident: IncidentReportCreate, db: Session = Depends(get_db)):
+    query = text("""
+        INSERT INTO Incident_Reports
+        (Incident_ID, Incident_Type, Date_Time, Location, Reported_By, Status, Assigned_Authority)
+        VALUES
+        (:id, :type, :dt, :loc, :by, :status, :auth)
+    """)
+    try:
+        db.execute(query, {
+            "id":     incident.Incident_ID,
+            "type":   incident.Incident_Type,
+            "dt":     incident.Date_Time,
+            "loc":    incident.Location,
+            "by":     incident.Reported_By,
+            "status": incident.Status.value if incident.Status else "Pending",
+            "auth":   incident.Assigned_Authority,
+        })
+        db.commit()
+    except Exception as e:
+        db.rollback()
+        raise HTTPException(status_code=500, detail=str(e))
+    return {"message": "Incident reported successfully"}
