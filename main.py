@@ -1,13 +1,13 @@
 import logging
 from fastapi import FastAPI, HTTPException, Depends, Request
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, FileResponse
 from fastapi.staticfiles import StaticFiles
-from fastapi.templating import Jinja2Templates
 from sqlalchemy.orm import Session
 from sqlalchemy import text
 import uuid
 import jwt
 from datetime import datetime, timedelta
+import os
 
 from pydanticmodel import *
 from database import SessionLocal
@@ -18,7 +18,7 @@ logging.basicConfig(level=logging.INFO)
 
 app = FastAPI(title="Kumbh Management")
 
-# ✅ CORS
+# CORS
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -27,22 +27,80 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# ✅ STATIC (NO CONDITION — ALWAYS MOUNT)
+# Static files (CSS, images, JS)
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
-# ✅ TEMPLATES (NO None — MUST EXIST)
-templates = Jinja2Templates(directory="templates")
+TEMPLATES_DIR = "templates"
+
+def serve_html(filename: str):
+    """Serve a plain HTML file from the templates directory."""
+    filepath = os.path.join(TEMPLATES_DIR, filename)
+    if not os.path.exists(filepath):
+        return HTMLResponse(f"<h2>Page not found: {filename}</h2>", status_code=404)
+    return FileResponse(filepath, media_type="text/html")
 
 
-# ✅ SAFE TEMPLATE FUNCTION
-def render_template(template_name: str, request: Request):
-    try:
-        return templates.TemplateResponse(template_name, {"request": request})
-    except Exception as e:
-        return HTMLResponse(f"Template error: {str(e)}")
+# =========================
+# HTML ROUTES
+# =========================
+
+@app.get("/", response_class=HTMLResponse)
+async def root():
+    return serve_html("index.html")
+
+@app.get("/index.html", response_class=HTMLResponse)
+async def index():
+    return serve_html("index.html")
+
+@app.get("/login1.html", response_class=HTMLResponse)
+async def login_page():
+    return serve_html("login1.html")
+
+@app.get("/accomodation.html", response_class=HTMLResponse)
+async def accomodation():
+    return serve_html("accomodation.html")
+
+@app.get("/dashboard.html", response_class=HTMLResponse)
+async def dashboard():
+    return serve_html("dashboard.html")
+
+@app.get("/healthcare.html", response_class=HTMLResponse)
+async def healthcare():
+    return serve_html("healthcare.html")
+
+@app.get("/incident.html", response_class=HTMLResponse)
+async def incident():
+    return serve_html("incident.html")
+
+@app.get("/fire.html", response_class=HTMLResponse)
+async def fire():
+    return serve_html("fire.html")
+
+@app.get("/lost_found.html", response_class=HTMLResponse)
+async def lost():
+    return serve_html("lost_found.html")
+
+@app.get("/police.html", response_class=HTMLResponse)
+async def police():
+    return serve_html("police.html")
+
+@app.get("/register.html", response_class=HTMLResponse)
+async def register_page():
+    return serve_html("register.html")
+
+@app.get("/stall.html", response_class=HTMLResponse)
+async def stall():
+    return serve_html("stall.html")
+
+@app.get("/transport.html", response_class=HTMLResponse)
+async def transport():
+    return serve_html("transport.html")
 
 
-# ✅ DB Dependency
+# =========================
+# DB Dependency
+# =========================
+
 def get_db():
     db = SessionLocal()
     try:
@@ -52,64 +110,7 @@ def get_db():
 
 
 # =========================
-# 🌐 HTML ROUTES
-# =========================
-
-@app.get("/", response_class=HTMLResponse)
-async def root(request: Request):
-    return render_template("index.html", request)
-
-@app.get("/index.html", response_class=HTMLResponse)
-async def index(request: Request):
-    return render_template("index.html", request)
-
-@app.get("/login1.html", response_class=HTMLResponse)
-async def login_page(request: Request):
-    return render_template("login1.html", request)
-
-@app.get("/accomodation.html", response_class=HTMLResponse)
-async def accomodation(request: Request):
-    return render_template("accomodation.html", request)
-
-@app.get("/dashboard.html", response_class=HTMLResponse)
-async def dashboard(request: Request):
-    return render_template("dashboard.html", request)
-
-@app.get("/healthcare.html", response_class=HTMLResponse)
-async def healthcare(request: Request):
-    return render_template("healthcare.html", request)
-
-@app.get("/incident.html", response_class=HTMLResponse)
-async def incident(request: Request):
-    return render_template("incident.html", request)
-
-@app.get("/fire.html", response_class=HTMLResponse)
-async def fire(request: Request):
-    return render_template("fire.html", request)
-
-@app.get("/lost_found.html", response_class=HTMLResponse)
-async def lost(request: Request):
-    return render_template("lost_found.html", request)
-
-@app.get("/police.html", response_class=HTMLResponse)
-async def police(request: Request):
-    return render_template("police.html", request)
-
-@app.get("/register.html", response_class=HTMLResponse)
-async def register(request: Request):
-    return render_template("register.html", request)
-
-@app.get("/stall.html", response_class=HTMLResponse)
-async def stall(request: Request):
-    return render_template("stall.html", request)
-
-@app.get("/transport.html", response_class=HTMLResponse)
-async def transport(request: Request):
-    return render_template("transport.html", request)
-
-
-# =========================
-# 🧾 PILGRIM REGISTER API
+# PILGRIM REGISTER API
 # =========================
 
 @app.post("/pilgrims/register", status_code=201)
@@ -118,7 +119,7 @@ async def register_pilgrims(pilgrim_data: PilgrimBase, db: Session = Depends(get
 
     query = text("""
         INSERT INTO Pilgrims
-        (PILGRIM_ID, NAME, AGE, GENDER, CONTACT_NUMBER, EMAIL_ADDRESS, ADDRESS, EMERGENCY_CONTACT, MEDICAL_CONDITION)
+        (Pilgrim_ID, Name, Age, Gender, Contact_Number, Email_Address, Address, Emergency_Contact, Medical_Condition)
         VALUES
         (:pid, :name, :age, :gender, :contact, :email, :addr, :emergency, :medical)
     """)
@@ -128,7 +129,7 @@ async def register_pilgrims(pilgrim_data: PilgrimBase, db: Session = Depends(get
             "pid": pilgrim_id,
             "name": pilgrim_data.Name,
             "age": pilgrim_data.Age,
-            "gender": pilgrim_data.Gender,
+            "gender": pilgrim_data.Gender.value if pilgrim_data.Gender else None,
             "contact": pilgrim_data.Contact_Number,
             "email": pilgrim_data.Email_Address,
             "addr": pilgrim_data.Address,
@@ -136,30 +137,33 @@ async def register_pilgrims(pilgrim_data: PilgrimBase, db: Session = Depends(get
             "medical": pilgrim_data.Medical_Condition
         })
         db.commit()
+        logging.info(f"Registered pilgrim: {pilgrim_id}")
     except Exception as e:
         db.rollback()
-        return {"error": str(e)}
+        logging.error(f"Failed to register pilgrim: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
 
     return {"message": "Success", "id": pilgrim_id}
 
 
 # =========================
-# 🔐 AUTH
+# AUTH
 # =========================
 
-SECRET_KEY = "secret"
+SECRET_KEY = os.environ.get("SECRET_KEY", "change-me-in-production")
 ALGORITHM = "HS256"
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/login")
 
 def create_access_token(data: dict):
-    data.update({"exp": datetime.utcnow() + timedelta(minutes=30)})
-    return jwt.encode(data, SECRET_KEY, algorithm=ALGORITHM)
+    to_encode = data.copy()
+    to_encode.update({"exp": datetime.utcnow() + timedelta(minutes=30)})
+    return jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
 
 @app.post("/login")
 async def login(form_data: OAuth2PasswordRequestForm = Depends(), db: Session = Depends(get_db)):
     user = db.execute(
-        text("SELECT * FROM authorities WHERE username=:u"),
+        text("SELECT * FROM Authorities WHERE Username=:u"),
         {"u": form_data.username}
     ).fetchone()
 
@@ -167,4 +171,4 @@ async def login(form_data: OAuth2PasswordRequestForm = Depends(), db: Session = 
         raise HTTPException(status_code=401, detail="Invalid credentials")
 
     token = create_access_token({"sub": user[1]})
-    return {"access_token": token}
+    return {"access_token": token, "token_type": "bearer"}

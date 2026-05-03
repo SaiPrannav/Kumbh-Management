@@ -3,10 +3,9 @@ from sqlalchemy.orm import relationship
 from database import Base
 
 from sqlalchemy import Column, String, Integer, Text, Boolean, Enum, DateTime, Date, ForeignKey
-from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 
-Base = declarative_base()
+
 
 class Authorities(Base):
     __tablename__ = 'Authorities'
