@@ -24,9 +24,10 @@ class ClaimStatusEnum(str, Enum):
 
 
 class IncidentStatusEnum(str, Enum):
-    Ongoing = "Ongoing"
-    Pending = "Pending"
-    Resolved = "Resolved"
+    Reported    = "Reported"
+    In_Progress = "In Progress"
+    Resolved    = "Resolved"
+    Closed      = "Closed"
 
 
 # Base Models (for shared fields)

@@ -14,6 +14,11 @@ from database import SessionLocal
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 
+from models import Base         
+from database import engine      
+
+Base.metadata.create_all(bind=engine)  
+
 logging.basicConfig(level=logging.INFO)
 
 app = FastAPI(title="Kumbh Management")

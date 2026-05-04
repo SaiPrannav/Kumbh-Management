@@ -4,13 +4,13 @@ from sqlalchemy.ext.declarative import declarative_base
 import os
 from urllib.parse import quote_plus
 
-MYSQLUSER = os.environ.get("MYSQLUSER", "root")
-MYSQLPASSWORD = quote_plus(os.environ.get("MYSQLPASSWORD", ""))
-MYSQLHOST = os.environ.get("MYSQLHOST", "localhost")
-MYSQLPORT = os.environ.get("MYSQLPORT", "3306")
-MYSQLDATABASE = os.environ.get("MYSQLDATABASE", "railway")
+PGUSER     = os.environ.get("PGUSER", "postgres")
+PGPASSWORD = quote_plus(os.environ.get("PGPASSWORD", ""))
+PGHOST     = os.environ.get("PGHOST", "localhost")
+PGPORT     = os.environ.get("PGPORT", "5432")
+PGDATABASE = os.environ.get("PGDATABASE", "railway")
 
-URL_DATABASE = f"mysql+pymysql://{MYSQLUSER}:{MYSQLPASSWORD}@{MYSQLHOST}:{MYSQLPORT}/{MYSQLDATABASE}"
+URL_DATABASE = f"postgresql+psycopg2://{PGUSER}:{PGPASSWORD}@{PGHOST}:{PGPORT}/{PGDATABASE}"
 
 engine = create_engine(URL_DATABASE, pool_pre_ping=True)
 
