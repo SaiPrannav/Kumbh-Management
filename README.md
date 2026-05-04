@@ -1,4 +1,4 @@
- Kumbh Mela Management System
+🪔 Kumbh Mela Management System
 A full-stack web application for managing pilgrim safety, logistics, and services during the Kumbh Mela festival. Built with FastAPI and PostgreSQL, deployed on Railway.
 🌐 Live Demo: https://kumbh-management-production-81f9.up.railway.app/index.html
 
@@ -11,6 +11,7 @@ Database Schema
 Getting Started
 API Documentation
 Deployment
+
 
 ✨ Features
 
@@ -114,5 +115,5 @@ VariableValuePGHOST${{Postgres.PGHOST}}PGPORT${{Postgres.PGPORT}}PGUSER${{Postgr
 The Procfile tells Railway how to start the server:
 web: uvicorn main:app --host 0.0.0.0 --port $PORT
 
-About
+🙏 About
 Built as part of a database management project to explore real-world use of relational databases, REST APIs, and cloud deployment. The Kumbh Mela is one of the largest human gatherings on Earth — this system aims to model the complexity of managing pilgrim safety and services at such a scale.
